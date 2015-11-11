@@ -44,6 +44,14 @@
         variances (map (partial variance n) sums sumsqs)]
     (Math/sqrt (reduce + (map / (map square dists) variances)))))
 
+;; and other geometry
+
+(defn dist-squared [p1 p2]
+  (reduce + (map square (map - p1 p2))))
+
+(defn closest [p centroids]
+  (apply min-key first (map #(vector (dist-squared p %) %) centroids)))
+
 
 ;;; misc probability math
 
