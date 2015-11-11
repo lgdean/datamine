@@ -26,7 +26,7 @@
   (map (partial mult-vec rows) cols))
 
 (defn transpose [rows]
-  (apply (partial map vector) rows))
+  (apply map vector rows))
 
 (defn mult [m1 m2]
   (mult-t m1 (transpose m2)))
