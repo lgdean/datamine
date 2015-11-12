@@ -18,7 +18,7 @@
 
 ;;; ... and matrices!
 
-(defn legit-matrix [m]
+(defn assert-rectangular [m]
   (assert (apply = (map count m)) (format "row lengths differ: %s" m)))
 
 (defn vec-mult [v cols]
@@ -34,8 +34,8 @@
   (apply map vector rows))
 
 (defn mult [m1 m2]
-  (legit-matrix m1)
-  (legit-matrix m2)
+  (assert-rectangular m1)
+  (assert-rectangular m2)
   (mult-t m1 (transpose m2)))
 
 
