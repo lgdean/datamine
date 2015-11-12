@@ -2,6 +2,10 @@
   (:require [clojure.test :refer :all])
   (load-file "util.clj"))
 
+(deftest vector-addition-test
+  (testing "vector addition"
+    (is (= [4 6] (add-vecs [1 2] [3 4])))))
+
 (deftest matrix-multiplication-test
   (testing "matrix multiplication" ; as the name suggests
     (is (= [[ 0 -6]

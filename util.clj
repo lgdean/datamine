@@ -16,6 +16,10 @@
   (/ (dot v1 v2)
      (* (mag v1) (mag v2))))
 
+(defn add-vecs [& vs]
+  (assert (apply = (map count vs))) ; hm, this line looks familiar
+  (apply mapv + vs))
+
 ;;; ... and matrices!
 
 (defn assert-rectangular [m]
