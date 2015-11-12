@@ -22,16 +22,16 @@
   (assert (apply = (map count m)) (format "row lengths differ: %s" m)))
 
 (defn vec-mult [v cols]
-  (map (partial dot v) cols))
+  (mapv (partial dot v) cols))
 
 (defn mult-vec [rows v] ; v is a column vector, by the way
-  (map (partial dot v) rows))
+  (mapv (partial dot v) rows))
 
 (defn mult-t [rows cols]
-  (map (partial mult-vec rows) cols))
+  (mapv (partial mult-vec rows) cols))
 
 (defn transpose [rows]
-  (apply map vector rows))
+  (apply mapv vector rows))
 
 (defn mult [m1 m2]
   (assert-rectangular m1)
