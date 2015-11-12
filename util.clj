@@ -6,7 +6,9 @@
 
 (defn dot2 [x1 y1 x2 y2] (+ (* x1 x2) (* y1 y2)))
 
-(defn dot [v1 v2] (reduce + (map * v1 v2)))
+(defn dot [v1 v2]
+  (assert (= (count v1) (count v2)) (format "mismatch: %s %s" v1 v2))
+  (reduce + (map * v1 v2)))
 
 (defn mag [ds] (Math/sqrt (reduce + (map square ds))))
 
@@ -15,6 +17,9 @@
      (* (mag v1) (mag v2))))
 
 ;;; ... and matrices!
+
+(defn legit-matrix [m]
+  (assert (apply = (map count m)) (format "row lengths differ: %s" m)))
 
 (defn vec-mult [v cols]
   (map (partial dot v) cols))
@@ -29,6 +34,8 @@
   (apply map vector rows))
 
 (defn mult [m1 m2]
+  (legit-matrix m1)
+  (legit-matrix m2)
   (mult-t m1 (transpose m2)))
 
 
